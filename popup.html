@@ -1,0 +1,69 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+<head>
+    <title>Timecard Aggregate</title>
+    <style>
+        body {
+            font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+            font-size: 100%;
+        }
+        .panel-wrap {
+            /* avoid an excessively wide status text */
+            width: 500px;
+            height: 50px;
+            margin: 30px;
+        }
+        #footer {
+            width: 100%;
+            height: 45px;
+            line-height: 45px;
+            font-size: 15pt;
+            text-align: center;
+        }
+        strong {
+            font-size: 13pt;
+        }
+        h2 {
+            margin: 20px;
+        }
+    </style>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <script src="popup.js"></script>
+</head>
+<body>
+<h2>Timecard Aggregate</h2>
+<div class="panel-wrap">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Time Clocked</h3>
+        </div>
+        <div class="panel-body">
+            You have worked a total of <strong id="hours"></strong> hours and <strong id="minutes"></strong> minutes this pay period.
+        </div>
+    </div>
+</div>
+<br>
+<div class="panel-wrap">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Wages</h3>
+        </div>
+        <div class="panel-body">
+            That's <strong>$</strong><strong id="money"></strong> before taxes!
+        </div>
+    </div>
+</div>
+<br>
+<div id="footer">
+    <a href="http://wademauger.com/" target="_blank">wademauger.com</a>
+</div>
+</body>
+</html>
+

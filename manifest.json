@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+
+  "name": "Timecard Aggregate",
+  "description": "Aggregate the hours and wages among all jobs from the current Timecard pay period",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts":[ {
+      "matches": ["https://fastapps.rit.edu/*"],
+      "js":["controller.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ]
+}
