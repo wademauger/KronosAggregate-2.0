@@ -20,7 +20,7 @@
 
 var GLOBAL_sumTime = 0;
 var GLOBAL_jobCount = 0;
-//var GLOBAL_sumWage;
+var GLOBAL_sumWage = 0;
 
 function getUserJSON(url, callback){
     var xmlHttp = new XMLHttpRequest();
@@ -52,19 +52,22 @@ getUserJSON('https://fastapps.rit.edu/kronosTimecard/rest/employeebyusername/<dc
             //Parse the information about the job, and add it to the interface
             jobData = JSON.parse(jobData);
 
-            //iterate through this job's punches, sum the hours for this job, and
-            //add it to the global sum
+            //iterate through this job's punches, sum the hours and wages for this job,
+            //and add it to the global sum
             for (var iter_times=0 ; iter_times<jobData.punchlist.length ; iter_times++){
                 var timeIn = new Date(jobData.punchlist[iter_times].in_datetime);
                 var timeOut = new Date(jobData.punchlist[iter_times].out_datetime);
                 GLOBAL_sumTime += (timeOut - timeIn);
-                console.log(iter_jobs, iter_times);
+                if (iter_times == 0){
+                    GLOBAL_sumWage += Number(jobData.summaries[0].wageamount);
+                    console.log("sum wages: ", GLOBAL_sumWage);
+                }
             }
             if(GLOBAL_jobCount == data.list.length-1){
                 //finished processing
                 var timesList = elapsedTimeToOutput(GLOBAL_sumTime);
                 console.log(timesList[0])
-                display_time(Math.floor(timesList[0]), Math.floor(timesList[1]));
+                display_time(Math.floor(timesList[0]), Math.floor(timesList[1]), Math.floor(GLOBAL_sumWage * 100) / 100);
             }else{
                 GLOBAL_jobCount++;
             }
@@ -83,13 +86,9 @@ function getJobJSON(url, callback){
 }
 
 function display_time(hours, minutes, wages){
-    document.getElementById("hours").innerHTML = hours;//.toString();
+    document.getElementById("hours").innerHTML = hours;
     document.getElementById("minutes").innerHTML = minutes;
-}
-
-
-function display_wage(money){
-    document.getElementById("money").innerHTML = money.float_num.toFixed(2).toString();
+    document.getElementById("money").innerHTML = wages;
 }
 
 function elapsedTimeToOutput(x) {
