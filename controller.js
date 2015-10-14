@@ -3,7 +3,19 @@
  * Scrape the Timecard website for information about
  * hours and pay.
 */
+'use strict';
+var JobIDs = [];
 
+function getJobIDs(listIDs){
+    console.log(document)
+    var radio_groups = document.getElementsByTagName("md-radio-group");
+    var jobs_group = (radio_groups[0].innerHTML.indexOf("job.id") >= -1) ? radio_groups[0] : radio_groups[1];
+    //for (var prop in jobs_group){
+    //    console.log(prop);
+    //}
+    console.log(jobs_group.children);
+
+}
 
 function main() {
 
@@ -27,4 +39,5 @@ function main() {
     });
 
 }
-main();
+//main();
+getJobIDs(JobIDs);
