@@ -13,8 +13,8 @@ The extension makes some simple HTTP requests, asking the Kronos server for info
 This extension is NOT currently listed in the chrome store. Until it is (if it is ever) listed on the Chrome store, to use this extension, you will have to install it manually.
 
 1. `git clone`
-2. In the repo directory, open the file `popup,js`.
-3. Find the line `getUserJSON('https://fastapps.rit.edu/kronosTimecard/rest/employeebyusername/<dce>', function (data){`, and replace `\<dce\>` with your RIT username. Save and close the file.
+2. In the repo directory, open the file `popup.js`.
+3. Find the line `getUserJSON('https://fastapps.rit.edu/kronosTimecard/rest/employeebyusername/<dce>`, function (data){`, and replace `<dce>` with your RIT username. Save and close the file.
 4. Open Google Chrome, and go to `chrome://extensions`.
 5. Drag the repo folder into the Chrome window.
 
