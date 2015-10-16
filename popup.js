@@ -32,7 +32,7 @@ function getUserJSON(url, callback){
     xmlHttp.send(null);
 }
 
-getUserJSON('https://fastapps.rit.edu/kronosTimecard/rest/employeebyusername/<dce>', function (data){
+getUserJSON('https://fastapps.rit.edu/kronosTimecard/rest/employeebyusername/wam9729', function (data){
 
     //Parse the given JSON and extract the nessesary information to continue
     data = JSON.parse(data);
@@ -59,7 +59,7 @@ getUserJSON('https://fastapps.rit.edu/kronosTimecard/rest/employeebyusername/<dc
                 var timeOut = new Date(jobData.punchlist[iter_times].out_datetime);
                 GLOBAL_sumTime += (timeOut - timeIn);
                 if (iter_times == 0){
-                    GLOBAL_sumWage += Number(jobData.summaries[0].wageamount);
+                    GLOBAL_sumWage += jobData.summaries[0].wageamount;
                     console.log("sum wages: ", GLOBAL_sumWage);
                 }
             }
@@ -89,6 +89,19 @@ function display_time(hours, minutes, wages){
     document.getElementById("hours").innerHTML = hours;
     document.getElementById("minutes").innerHTML = minutes;
     document.getElementById("money").innerHTML = wages;
+    var loading = document.getElementById("loading-cover");
+    function fadeOut(el){
+        el.style.opacity = 1;
+
+        (function fade() {
+            if ((el.style.opacity -= .1) < 0) {
+                el.style.display = "none";
+            } else {
+                requestAnimationFrame(fade);
+            }
+        })();
+    }
+    fadeOut(loading)
 }
 
 function elapsedTimeToOutput(x) {
