@@ -6,7 +6,7 @@ A Google Chrome extensions to be run after logging into your student timecard. S
 
 ##How does it work?
 
-The extension makes some simple HTTP requests, asking the Kronos server for information about you and your work hours. Kronos responds with JSON, which is then parsed, analised and displayed.
+The extension makes some simple HTTP requests, asking the Kronos server for information about you and your work hours. Kronos responds with JSON, which is then parsed, analysed and displayed.
 
 ##Installation
 
