@@ -59,8 +59,11 @@ getUserJSON('https://fastapps.rit.edu/kronosTimecard/rest/employeebyusername/wam
                 var timeOut = new Date(jobData.punchlist[iter_times].out_datetime);
                 GLOBAL_sumTime += (timeOut - timeIn);
                 if (iter_times == 0){
-                    GLOBAL_sumWage += jobData.summaries[0].wageamount;
-                    console.log("sum wages: ", GLOBAL_sumWage);
+                    jobData.summaries.forEach(function accumulateWages(jobObj){
+                        GLOBAL_sumWage += jobObj.wageamount;
+                    });
+                    //console.log("sum wages: ", GLOBAL_sumWage);
+                    //console.log("Job Object", jobData);
                 }
             }
             if(GLOBAL_jobCount == data.list.length-1){
