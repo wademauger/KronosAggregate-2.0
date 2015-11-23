@@ -32,7 +32,7 @@ function getUserJSON(url, callback){
     xmlHttp.send(null);
 }
 
-getUserJSON('https://fastapps.rit.edu/kronosTimecard/rest/employeebyusername/wam9729', function (data){
+getUserJSON('https://fastapps.rit.edu/kronosTimecard/rest/employeebyusername/<dce>', function (data){
 
     //Parse the given JSON and extract the nessesary information to continue
     data = JSON.parse(data);
