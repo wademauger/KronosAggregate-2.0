@@ -10,7 +10,7 @@ The extension makes some simple HTTP requests, asking the Kronos server for info
 
 ##Installation
 
-~This extension is NOT currently listed in the chrome store.~ [Install here!](https://chrome.google.com/webstore/detail/timecard-aggregate/dgdmklkdlbkibmfgnnfaoiapadpjgapp) to use this extension, you will have to install it manually.
+~~This extension is NOT currently listed in the chrome store.~~ [Install here!](https://chrome.google.com/webstore/detail/timecard-aggregate/dgdmklkdlbkibmfgnnfaoiapadpjgapp) to use this extension, you will have to install it manually.
 
 1. `git clone`
 2. In the repo directory, open the file `popup.js`.
